@@ -1,0 +1,521 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <character x="0" y="182" name="cat1" costumes="cat2.png" angle="0" rotation_style="left_right"></character>
+  <character x="544" y="183" name="frog1" costumes="frog1.png" angle="180" rotation_style="left_right"></character>
+  <character x="304" y="220" name="ball1" costumes="ball6.png" angle="225" rotation_style="left_right"></character>
+  <character x="272" y="1" name="cat2" costumes="cat3.png" angle="0" rotation_style="left_right"></character>
+  <block type="ruby_comment" x="-634" y="-341">
+    <field name="COMMENT">こんなこともあろうかと</field>
+  </block>
+  <block type="variables_set" inline="false" x="-363" y="-336">
+    <field name="VAR">hit_by</field>
+    <value name="VALUE">
+      <block type="text">
+        <field name="TEXT"></field>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" inline="false">
+        <field name="VAR">回数</field>
+        <value name="VALUE">
+          <block type="math_number">
+            <field name="NUM">0</field>
+          </block>
+        </value>
+      </block>
+    </next>
+  </block>
+  <block type="character_new" x="-671" y="-221">
+    <field name="NAME">cat1</field>
+    <statement name="DO">
+      <block type="events_on_key_push_or_down">
+        <field name="KEY">K_UP</field>
+        <field name="POD">down</field>
+        <statement name="DO">
+          <block type="motion_change_y_by" inline="true">
+            <value name="Y">
+              <block type="math_number">
+                <field name="NUM">-10</field>
+              </block>
+            </value>
+          </block>
+        </statement>
+        <next>
+          <block type="events_on_key_push_or_down">
+            <field name="KEY">K_DOWN</field>
+            <field name="POD">down</field>
+            <statement name="DO">
+              <block type="motion_change_y_by" inline="true">
+                <value name="Y">
+                  <block type="math_number">
+                    <field name="NUM">10</field>
+                  </block>
+                </value>
+              </block>
+            </statement>
+            <next>
+              <block type="events_on_key_push_or_down">
+                <field name="KEY">K_RIGHT</field>
+                <field name="POD">down</field>
+                <statement name="DO">
+                  <block type="control_if_else" inline="true">
+                    <value name="COND">
+                      <block type="operators_compare_lte" inline="true">
+                        <value name="A">
+                          <block type="sensing_character_property">
+                            <field name="CHAR">cat1</field>
+                            <field name="PROPERTY">x</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number">
+                            <field name="NUM">224</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="THEN">
+                      <block type="motion_change_x_by" inline="true">
+                        <value name="X">
+                          <block type="math_number">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="motion_set_x" inline="true">
+                        <value name="X">
+                          <block type="math_number">
+                            <field name="NUM">224</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </statement>
+                <next>
+                  <block type="events_on_key_push_or_down">
+                    <field name="KEY">K_LEFT</field>
+                    <field name="POD">down</field>
+                    <statement name="DO">
+                      <block type="motion_change_x_by" inline="true">
+                        <value name="X">
+                          <block type="math_number">
+                            <field name="NUM">-10</field>
+                          </block>
+                        </value>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="character_new" x="-228" y="-212">
+    <field name="NAME">cat2</field>
+    <statement name="DO">
+      <block type="events_on_start">
+        <statement name="DO">
+          <block type="pen_set_pen_color">
+            <field name="COLOUR">#ff0000</field>
+            <next>
+              <block type="motion_set_angle" inline="true">
+                <value name="ANGLE">
+                  <block type="math_number">
+                    <field name="NUM">90</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="pen_down_pen">
+                    <next>
+                      <block type="control_until" inline="true">
+                        <value name="COND">
+                          <block type="sensing_reach_wall"></block>
+                        </value>
+                        <statement name="DO">
+                          <block type="looks_say" inline="true">
+                            <value name="TEXT">
+                              <block type="text">
+                                <field name="TEXT">レディ・・・</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="motion_move" inline="true">
+                                <value name="STEP">
+                                  <block type="math_number">
+                                    <field name="NUM">20</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="control_await"></block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </statement>
+                        <next>
+                          <block type="looks_say" inline="true">
+                            <value name="TEXT">
+                              <block type="text">
+                                <field name="TEXT">ゴー！！！</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="control_sleep" inline="true">
+                                <value name="SEC">
+                                  <block type="math_number">
+                                    <field name="NUM">1</field>
+                                  </block>
+                                </value>
+                                <next>
+                                  <block type="control_loop">
+                                    <statement name="DO">
+                                      <block type="looks_say" inline="true">
+                                        <value name="TEXT">
+                                          <block type="variables_get">
+                                            <field name="VAR">回数</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                  </block>
+                                </next>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="character_new" x="93" y="-206">
+    <field name="NAME">ball1</field>
+    <statement name="DO">
+      <block type="events_on_start">
+        <statement name="DO">
+          <block type="control_sleep" inline="true">
+            <value name="SEC">
+              <block type="math_number">
+                <field name="NUM">2</field>
+              </block>
+            </value>
+            <next>
+              <block type="control_loop">
+                <statement name="DO">
+                  <block type="motion_move" inline="true">
+                    <value name="STEP">
+                      <block type="operators_add" inline="true">
+                        <value name="A">
+                          <block type="math_number">
+                            <field name="NUM">10</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="variables_get">
+                            <field name="VAR">回数</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="motion_turn_if_reach_wall">
+                        <next>
+                          <block type="control_if" inline="true">
+                            <value name="COND">
+                              <block type="operators_compare_gte" inline="true">
+                                <value name="A">
+                                  <block type="sensing_character_property">
+                                    <field name="CHAR">ball1</field>
+                                    <field name="PROPERTY">x</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number">
+                                    <field name="NUM">608</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <statement name="THEN">
+                              <block type="character_new">
+                                <field name="NAME">cat1</field>
+                                <statement name="DO">
+                                  <block type="looks_say" inline="true">
+                                    <value name="TEXT">
+                                      <block type="text">
+                                        <field name="TEXT">勝った！</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </statement>
+                                <next>
+                                  <block type="control_break"></block>
+                                </next>
+                              </block>
+                            </statement>
+                            <next>
+                              <block type="control_if" inline="true">
+                                <value name="COND">
+                                  <block type="operators_compare_lte" inline="true">
+                                    <value name="A">
+                                      <block type="sensing_character_property">
+                                        <field name="CHAR">ball1</field>
+                                        <field name="PROPERTY">x</field>
+                                      </block>
+                                    </value>
+                                    <value name="B">
+                                      <block type="math_number">
+                                        <field name="NUM">0</field>
+                                      </block>
+                                    </value>
+                                  </block>
+                                </value>
+                                <statement name="THEN">
+                                  <block type="character_new">
+                                    <field name="NAME">cat1</field>
+                                    <statement name="DO">
+                                      <block type="looks_say" inline="true">
+                                        <value name="TEXT">
+                                          <block type="text">
+                                            <field name="TEXT">負けたー</field>
+                                          </block>
+                                        </value>
+                                      </block>
+                                    </statement>
+                                    <next>
+                                      <block type="control_break"></block>
+                                    </next>
+                                  </block>
+                                </statement>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </next>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="character_new" x="-672" y="300">
+    <field name="NAME">frog1</field>
+    <statement name="DO">
+      <block type="events_on_start">
+        <statement name="DO">
+          <block type="control_loop">
+            <statement name="DO">
+              <block type="control_if_else" inline="true">
+                <value name="COND">
+                  <block type="operators_compare_gte" inline="true">
+                    <value name="A">
+                      <block type="sensing_character_property">
+                        <field name="CHAR">frog1</field>
+                        <field name="PROPERTY">y</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="sensing_character_property">
+                        <field name="CHAR">ball1</field>
+                        <field name="PROPERTY">y</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="THEN">
+                  <block type="motion_change_y_by" inline="true">
+                    <value name="Y">
+                      <block type="math_number">
+                        <field name="NUM">-15</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="motion_change_y_by" inline="true">
+                    <value name="Y">
+                      <block type="math_number">
+                        <field name="NUM">15</field>
+                      </block>
+                    </value>
+                  </block>
+                </statement>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="character_new" x="12" y="539">
+    <field name="NAME">ball1</field>
+    <statement name="DO">
+      <block type="events_on_hit">
+        <field name="CHAR">cat1</field>
+        <statement name="DO">
+          <block type="control_if" inline="true">
+            <value name="COND">
+              <block type="operators_negate" inline="true">
+                <value name="A">
+                  <block type="operators_compare_eq" inline="true">
+                    <value name="A">
+                      <block type="variables_get">
+                        <field name="VAR">hit_by</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text">
+                        <field name="TEXT">cat1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="THEN">
+              <block type="variables_set" inline="false">
+                <field name="VAR">hit_by</field>
+                <value name="VALUE">
+                  <block type="text">
+                    <field name="TEXT">cat1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" inline="false">
+                    <field name="VAR">回数</field>
+                    <value name="VALUE">
+                      <block type="operators_add" inline="true">
+                        <value name="A">
+                          <block type="variables_get">
+                            <field name="VAR">回数</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="control_if_else" inline="true">
+                        <value name="COND">
+                          <block type="sensing_input_key_push_or_down">
+                            <field name="KEY">K_RIGHT</field>
+                            <field name="POD">down</field>
+                          </block>
+                        </value>
+                        <statement name="THEN">
+                          <block type="motion_set_angle" inline="true">
+                            <value name="ANGLE">
+                              <block type="operators_rand" inline="true">
+                                <value name="A">
+                                  <block type="math_number">
+                                    <field name="NUM">-45</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number">
+                                    <field name="NUM">45</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </statement>
+                        <statement name="ELSE">
+                          <block type="motion_turn_xy">
+                            <field name="XY">x</field>
+                          </block>
+                        </statement>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+  <block type="character_new" x="-672" y="645">
+    <field name="NAME">ball1</field>
+    <statement name="DO">
+      <block type="events_on_hit">
+        <field name="CHAR">frog1</field>
+        <statement name="DO">
+          <block type="control_if" inline="true">
+            <value name="COND">
+              <block type="operators_negate" inline="true">
+                <value name="A">
+                  <block type="operators_compare_eq" inline="true">
+                    <value name="A">
+                      <block type="variables_get">
+                        <field name="VAR">hit_by</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="text">
+                        <field name="TEXT">frog1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+              </block>
+            </value>
+            <statement name="THEN">
+              <block type="variables_set" inline="false">
+                <field name="VAR">hit_by</field>
+                <value name="VALUE">
+                  <block type="text">
+                    <field name="TEXT">frog1</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="variables_set" inline="false">
+                    <field name="VAR">回数</field>
+                    <value name="VALUE">
+                      <block type="operators_add" inline="true">
+                        <value name="A">
+                          <block type="variables_get">
+                            <field name="VAR">回数</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <next>
+                      <block type="motion_turn_xy">
+                        <field name="XY">x</field>
+                      </block>
+                    </next>
+                  </block>
+                </next>
+              </block>
+            </statement>
+          </block>
+        </statement>
+      </block>
+    </statement>
+  </block>
+</xml>
